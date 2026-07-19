@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — NicheScope</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="wrap" style="max-width:720px">
+    <p><a href="/" style="color:var(--accent);font-weight:600;text-decoration:none">← Back to NicheScope</a></p>
+    <h1>About NicheScope</h1>
+    <p class="muted" style="font-size:14px">A personal Etsy keyword-research tool</p>
+
+    <p>NicheScope helps me size up a product niche on Etsy before I commit to it.
+    I type a keyword and it samples current public listings to show how crowded the
+    niche is, what price bands sell, how much interest listings attract (favorites),
+    and which tags dominate the top results.</p>
+
+    <h2 style="color:var(--accent)">How it works</h2>
+    <p>It calls the <a href="https://developers.etsy.com/" style="color:var(--accent)">Etsy Open API v3</a>
+    public listing search with an application key (no OAuth, no access to any member's
+    private data), then computes the statistics locally. Nothing is stored on a server.</p>
+
+    <h2 style="color:var(--accent)">Scope &amp; privacy</h2>
+    <ul>
+      <li>Public endpoints only — no login, no private data.</li>
+      <li>No database, no accounts, no tracking or analytics.</li>
+      <li>Personal, non-commercial tool used only by me.</li>
+    </ul>
+
+    <p class="muted" style="font-size:12.5px;margin-top:26px">
+      The term “Etsy” is a trademark of Etsy, Inc. This application uses the Etsy API
+      but is not endorsed or certified by Etsy, Inc.
+    </p>
+  </div>
+</body>
+</html>

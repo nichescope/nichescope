@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NicheScope — Etsy keyword research</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔭</text></svg>" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">🔭 <b>Niche</b>Scope</div>
+    <span class="sub">Etsy keyword &amp; niche research</span>
+    {% if demo %}<span class="demo">demo data</span>{% endif %}
+  </header>
+
+  <main class="wrap">
+    <form id="form" class="search">
+      <input id="kw" name="keyword" placeholder="Enter a niche keyword — e.g. “dog mom mug”, “boho wall art”" autofocus />
+      <button type="submit">Analyze</button>
+    </form>
+
+    <section id="empty" class="empty">
+      <p>Type a keyword to see competition, price bands, and the tags that win in that niche.</p>
+    </section>
+
+    <section id="report" class="report hidden">
+      <div class="kpis">
+        <div class="kpi"><span class="k-label">Listings found</span><span id="k-count" class="k-val"></span></div>
+        <div class="kpi"><span class="k-label">Competition</span><span id="k-comp" class="k-val"></span></div>
+        <div class="kpi"><span class="k-label">Median price</span><span id="k-median" class="k-val"></span></div>
+        <div class="kpi"><span class="k-label">Avg favorites</span><span id="k-favs" class="k-val"></span></div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Price distribution <span id="price-range" class="muted"></span></h2>
+          <div id="hist" class="hist"></div>
+        </div>
+        <div class="card">
+          <h2>Top tags in this niche</h2>
+          <div id="tags" class="tags"></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="error" class="error hidden"></div>
+  </main>
+
+  <footer class="foot">
+    The term “Etsy” is a trademark of Etsy, Inc. NicheScope uses the Etsy API but is not
+    endorsed or certified by Etsy, Inc. · Public data only. ·
+    <a href="/static/about.html">About</a>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

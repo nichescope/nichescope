@@ -1,0 +1,135 @@
+/* NicheScope — clean analytics look: light, slate + emerald accent */
+:root {
+  --bg: #f4f6f5;
+  --card: #ffffff;
+  --ink: #1c2a26;
+  --muted: #6d7d77;
+  --line: #e2e8e5;
+  --accent: #0f9d6e;
+  --accent-soft: #e4f5ee;
+  --slate: #33475b;
+  --shadow: 0 1px 2px rgba(20, 40, 33, .05), 0 6px 20px rgba(20, 40, 33, .05);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+}
+.hidden { display: none !important; }
+.muted { color: var(--muted); font-weight: 400; font-size: 13px; }
+
+.bar {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 16px 30px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-size: 19px; }
+.brand b { color: var(--accent); }
+.bar .sub { color: var(--muted); font-size: 13.5px; }
+.bar .demo {
+  margin-left: auto;
+  background: #fdf1dc; color: #a8730d;
+  font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 28px 30px 50px; }
+
+.search { display: flex; gap: 10px; margin-bottom: 26px; }
+.search input {
+  flex: 1;
+  font: inherit;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  outline: none;
+}
+.search input:focus { border-color: var(--accent); }
+.search button {
+  font: inherit; font-weight: 700;
+  border: none; border-radius: 10px;
+  padding: 0 26px;
+  background: var(--accent); color: #fff;
+  cursor: pointer;
+}
+.search button:hover { filter: brightness(1.06); }
+
+.empty { text-align: center; color: var(--muted); padding: 50px 0; }
+
+/* -------------------------------------------------------------------- KPIs */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+@media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 15px 18px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.k-label { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); font-weight: 600; }
+.k-val { font-size: 24px; font-weight: 800; }
+.k-val.comp-High { color: #c0392b; }
+.k-val.comp-Medium { color: #b8860b; }
+.k-val.comp-Low { color: var(--accent); }
+
+/* ------------------------------------------------------------------- cards */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+}
+.card h2 { margin: 0 0 16px; font-size: 15px; }
+
+/* --------------------------------------------------------------- histogram */
+.hist { display: flex; align-items: flex-end; gap: 6px; height: 150px; }
+.hist .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+.hist .bar-fill {
+  width: 100%;
+  background: linear-gradient(180deg, var(--accent), #7ed3b2);
+  border-radius: 5px 5px 0 0;
+  min-height: 3px;
+  transition: height .3s;
+}
+.hist .bar-x { font-size: 10.5px; color: var(--muted); }
+
+/* -------------------------------------------------------------------- tags */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--accent-soft);
+  border: 1px solid #cdeee0;
+  color: var(--slate);
+  font-size: 13px; font-weight: 600;
+  padding: 5px 11px; border-radius: 999px;
+}
+.tag .n { color: var(--accent); font-weight: 800; }
+
+.error {
+  margin-top: 18px;
+  background: #fdecea; color: #b3392f;
+  border: 1px solid #f5c6c0;
+  padding: 13px 16px; border-radius: 10px; font-weight: 600;
+}
+
+.foot {
+  text-align: center; color: var(--muted);
+  font-size: 12px; padding: 18px 30px 30px;
+}
+.foot a { color: var(--accent); }
