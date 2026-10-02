@@ -40,6 +40,27 @@ function render(r) {
     `<span class="tag">${esc(t.tag)} <span class="n">${t.count}</span></span>`).join("")
     || `<span class="muted">No tags found.</span>`;
 
+  
+  // Optional shop velocity (only when backend enabled it)
+  const velBox = $("#velocity");
+  if (velBox) {
+    const vel = r.shop_velocity || {};
+    const shops = Object.keys(vel);
+    if (!r.velocity_enabled || !shops.length) {
+      velBox.classList.add("hidden");
+      velBox.innerHTML = "";
+    } else {
+      velBox.classList.remove("hidden");
+      velBox.innerHTML = "<h2>Shop velocity (30d)</h2><div class=\"tags\">" + shops.map((s) => {
+        const v = vel[s] || {};
+        const sales = v.sales_30d ?? v.delta_28d;
+        const trend = v.breakout ? "breakout" : (v.status === "no_coverage" ? "n/a" : "ok");
+        const label = sales == null ? "n/a" : String(sales);
+        return `<span class="tag">${esc(s)} <span class="n">${esc(label)} · ${esc(trend)}</span></span>`;
+      }).join("") + "</div>";
+    }
+  }
+
   $("#report").classList.remove("hidden");
 }
 

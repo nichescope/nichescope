@@ -28,11 +28,13 @@ async def search_active(keywords: str, limit: int = 100) -> list[dict]:
     """Fetch up to `limit` active listings for a keyword (paged by 100)."""
     out: list[dict] = []
     offset = 0
+    # When shop velocity is enabled, ask Etsy for Shop so we have shop names.
+    include_shop = os.getenv("NICHESCOPE_VELOCITY") == "1"
     while len(out) < limit:
-        page = await _get(
-            "/listings/active",
-            {"keywords": keywords, "limit": min(100, limit - len(out)), "offset": offset},
-        )
+        params = {"keywords": keywords, "limit": min(100, limit - len(out)), "offset": offset}
+        if include_shop:
+            params["includes"] = "Shop"
+        page = await _get("/listings/active", params)
         results = page.get("results", [])
         out.extend(results)
         total = page.get("count", 0)

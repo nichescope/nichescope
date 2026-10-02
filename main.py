@@ -17,7 +17,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app import analysis, etsy, mock
+from app import analysis, etsy, mock, velocity
 
 BASE = Path(__file__).parent
 app = FastAPI(title="NicheScope")
@@ -46,6 +46,14 @@ async def analyze(keyword: str = ""):
             listings, total = mock.mock_search(keyword, limit=100)
             report = analysis.analyze(keyword, listings, total)
         report["demo"] = not etsy.has_api_key()
+        # Optional hosted shop-velocity column (off unless NICHESCOPE_VELOCITY=1)
+        shops = velocity.shops_from_listings(listings)
+        vel = velocity.shop_velocity(shops)
+        report["velocity_enabled"] = bool(vel) or (
+            __import__("os").environ.get("NICHESCOPE_VELOCITY") == "1"
+            and bool(__import__("os").environ.get("APIFY_TOKEN"))
+        )
+        report["shop_velocity"] = vel
         return report
     except Exception as exc:  # noqa: BLE001 — surface any API error to the UI
         return JSONResponse({"error": str(exc)}, status_code=500)
