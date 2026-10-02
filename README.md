@@ -48,3 +48,12 @@ static/            CSS, JS, about page
 
 NicheScope computes statistics on the fly and stores nothing, in line with Etsy's API
 Terms of Use (including caching limits). It reads only public listing data.
+
+## Optional shop velocity column
+
+Set `NICHESCOPE_VELOCITY=1` and `APIFY_TOKEN` to append a hosted shop-sales panel
+read (`publicrecords/etsy-shop-velocity`) for shops present on the results page.
+Off by default. Shops not yet in the panel show as `no_coverage` / n/a and are
+queued for the next day at no charge. The panel is hosted — no scraping from
+your machine. Pricing is on the Actor page (per shop history record). Requires
+`apify-client` (`pip install apify-client`).
